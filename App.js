@@ -8,6 +8,8 @@ import { Animated, Text, View, StyleSheet, Button, SafeAreaView } from "react-na
 import { MathApp} from './maths/components/MathApp';
 import { styles} from './maths/components/Styles'
 import { AsyncComponent } from './AsyncComponent';
+import {MySurface} from './maths/components/MySurface'
+import { ArithOpsScreen } from './maths/components/ArithOpsScreen';
 // import {AsyncApp} from './AsyncComponent'
 // impoert {AsyncComponent}
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,17 +17,17 @@ import { AsyncComponent } from './AsyncComponent';
 // import AsyncStorage from '@react-native-community/async-storage';
 const Stack = createStackNavigator();
 
-const HomeScreen = ({ navigation }) => {
+const LevelScreen = ({ navigation }) => {
   let level=1
 
   return (
     <>
-    <Button
+    {/* <Button
       title="Go to Ved's profile"
       onPress={() =>
         navigation.navigate('Profile', { name: 'Jane' })
-      }
-    />
+      } */}
+    {/* /> */}
     {/* <Button title="Level 1" onPress={() => navigation.navigate('MathScreen', { level: 1 })  }  /> */}
     {Array.apply(0, Array(4).fill(0)).map(function(_,b) { return b ; })
             .map((k)=>
@@ -57,30 +59,44 @@ const ProfileScreen = ({ navigation, route }) => {
   
 
 const MathScreen = ({ navigation, route }) => {
-  // let keys=AsyncStorage.getAllKeys();
-  return <MathApp level={route.params.level}/>
-  // let values=AsyncStorage.getItem('name');
-
-  
+  return <MathApp level={route.params.level}/>  
 }
 
-const App = () => {
-  return <AsyncComponent />
-// return (
-//   <NavigationContainer>
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         name="Home"
-//         component={HomeScreen}
-//         options={{ title: 'Welcome' }}
-//       />
-//       <Stack.Screen name="Profile" component={ProfileScreen} />
+const NavApp = () => {
+  // return <AsyncComponent />
+return (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={LevelScreen}
+        options={{ title: 'Welcome' }}
+      />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
 
-//       <Stack.Screen name="MathScreen" component={MathScreen} />
+      <Stack.Screen name="MathScreen" component={MathScreen} />
       
-//     </Stack.Navigator>
-//   </NavigationContainer>
-// );
+    </Stack.Navigator>
+  </NavigationContainer>
+);
+};
+
+const App = () => {
+  // return <AsyncComponent />
+  return <ArithOpsScreen />
+return (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Select Level"
+        component={LevelScreen}
+        options={{ title: 'Select Level' }}
+      />
+      <Stack.Screen name="MathScreen" component={MathScreen} />
+      
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 };
 
 export default App;
