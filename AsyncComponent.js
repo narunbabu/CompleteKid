@@ -24,12 +24,6 @@ import {
   } from 'react-native/Libraries/NewAppScreen';
 
   
-
-  
-  
-  
-  
-  
   export const AsyncComponent= () => {
     
     const [name, setName] = useState('Arun')//new Array(3).fill(1)

@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
       // backgroundColor:'#75714d',
       // opacity: 0.1,
       width:250,
+      // height:60,
       position: 'relative',
       // left:     80,
       top:      0,
@@ -49,8 +50,8 @@ export const styles = StyleSheet.create({
       color: "#FFCB1F",
       justifyContent: "center",
       alignSelf: "center",
-      marginTop: 10,
-      fontSize: 50
+      marginTop: 5,
+      fontSize: 40
     },
     line: {
       borderBottomColor: 'black',
@@ -73,8 +74,9 @@ export const styles = StyleSheet.create({
       
     },
     num:{    
-        margin: 5,
-        height: 60,
+        // margin: 5,
+        // marginTop:10,
+        height: 70,
         width:40,
         textAlign: "center",
         fontSize: 50,
@@ -114,8 +116,23 @@ export const styles = StyleSheet.create({
       height: 70,
       textAlign: "center",
       alignSelf: "center",
-      width: 45,
-      fontSize: 60,
+      width: 50,
+      fontSize: 50,
+      marginTop:5,
+      borderColor: '#8d3ec2',
+      borderWidth: 1 ,
+      borderRadius: 10,
+      padding:5,
+      // marginTop: 24,
+      // marginBottom: 24,
+      color: "#FFCB1F"
+    },
+    name: {
+      height: 70,
+      textAlign: "center",
+      alignSelf: "center",
+      width: 250,
+      fontSize: 30,
       margin:5,
       borderColor: '#8d3ec2',
       borderWidth: 1 ,
@@ -124,7 +141,7 @@ export const styles = StyleSheet.create({
       // marginBottom: 24,
       color: "#FFCB1F"
     },
-    button: {
+    btn: {
       backgroundColor: "#1D1D1B"
     },
     buttonText: {

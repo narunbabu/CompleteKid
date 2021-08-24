@@ -10,6 +10,9 @@ import { styles} from './maths/components/Styles'
 import { AsyncComponent } from './AsyncComponent';
 import {MySurface} from './maths/components/MySurface'
 import { ArithOpsScreen } from './maths/components/ArithOpsScreen';
+import { MyStack } from './maths/components/MyStack';
+import {MyWelcomeScreen} from './maths/components/MyWelcomeScreen'
+
 // import {AsyncApp} from './AsyncComponent'
 // impoert {AsyncComponent}
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,8 +29,7 @@ const LevelScreen = ({ navigation }) => {
       title="Go to Ved's profile"
       onPress={() =>
         navigation.navigate('Profile', { name: 'Jane' })
-      } */}
-    {/* /> */}
+      }  /> */}
     {/* <Button title="Level 1" onPress={() => navigation.navigate('MathScreen', { level: 1 })  }  /> */}
     {Array.apply(0, Array(4).fill(0)).map(function(_,b) { return b ; })
             .map((k)=>
@@ -44,17 +46,17 @@ const LevelScreen = ({ navigation }) => {
 
 
 
-const ProfileScreen = ({ navigation, route }) => {
-  // let user = await AsyncStorage.getItem('user');  
-  // let parsed = JSON.parse(user);  
+// const ProfileScreen = ({ navigation, route }) => {
+//   // let user = await AsyncStorage.getItem('user');  
+//   // let parsed = JSON.parse(user);  
   
-  return (
-    <>
-    <Text>Hello</Text>
-    {/* <AsyncApp /> */}
-    </>
-  )
-}
+//   return (
+//     <>
+//     <Text>Hello</Text>
+//     {/* <AsyncApp /> */}
+//     </>
+//   )
+// }
   // return <Text>This is {route.params.name}'s profile</Text>;
   
 
@@ -62,28 +64,31 @@ const MathScreen = ({ navigation, route }) => {
   return <MathApp level={route.params.level}/>  
 }
 
-const NavApp = () => {
-  // return <AsyncComponent />
-return (
-  <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={LevelScreen}
-        options={{ title: 'Welcome' }}
-      />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+// const NavApp = () => {
+//   // return <AsyncComponent />
+// return (
+//   <NavigationContainer>
+//     <Stack.Navigator>
+//       <Stack.Screen
+//         name="Home"
+//         component={LevelScreen}
+//         options={{ title: 'Welcome' }}
+//       />
+//       <Stack.Screen name="Profile" component={ProfileScreen} />
 
-      <Stack.Screen name="MathScreen" component={MathScreen} />
+//       <Stack.Screen name="MathScreen" component={MathScreen} />
       
-    </Stack.Navigator>
-  </NavigationContainer>
-);
-};
+//     </Stack.Navigator>
+//   </NavigationContainer>
+// );
+// };
 
 const App = () => {
+  // return  <MathApp level={1}/>
   // return <AsyncComponent />
-  return <ArithOpsScreen />
+  // return <ArithOpsScreen />
+  // return <MySurface  key='+' name='addition' symbol='+' myfunc={()=> console.log('main app')}/>
+  return <MyWelcomeScreen />
 return (
   <NavigationContainer>
     <Stack.Navigator>
@@ -92,6 +97,7 @@ return (
         component={LevelScreen}
         options={{ title: 'Select Level' }}
       />
+      {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
       <Stack.Screen name="MathScreen" component={MathScreen} />
       
     </Stack.Navigator>
