@@ -12,3 +12,6 @@ $ yarn add @react-native-community/async-storage
 
 # Link
 $ react-native link @react-native-community/async-storage
+
+
+npx react-native run-android --variant=release

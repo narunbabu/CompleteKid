@@ -26,7 +26,7 @@ const ModCloseIcon=(condval)=> {
 // class Result  extends Component 
 let resultnumber=0;
 let resdigits=[0,0];
-export const Result = ({mystyles,levels,randomnumbers,resinput}) => {
+export const Result = ({mystyles,levels,randomnumbers,resultnumber,resinput}) => {
     const CheckIcon = () => (<Icon name='checkmark-circle-2-outline' fill='green'/>);
 
     
@@ -36,18 +36,24 @@ export const Result = ({mystyles,levels,randomnumbers,resinput}) => {
     let isRightGuesses=[...resinput.isRightGuesses]
     let nrdigits=guessdigits.length
     // let nrdigits=levels[1]['ndigits']
-    // const [guessdigits, setguessdigits] = useState(new Array(ndigits).fill(0))//new Array(3).fill(1)
+    let myfocusTruths=[...resinput.isRightGuesses]
+    myfocusTruths[myfocusTruths.length-1]=true
+    // const [focusTruths, setfocusTruths] = useState(myfocusTruths)//new Array(3).fill(1)
     // const [isRightGuesses, setisRightGuesses] = useState(new Array(ndigits).fill(false))//new Array(3).fill(1)
 
     useEffect(()=>{
-        resultnumber=randomnumbers[0]+randomnumbers[1]
+        // resultnumber=randomnumbers[0]+randomnumbers[1]
         resdigits=resultnumber.toString().split('').map(Number)
         guessdigits=resinput.guessdigits 
         isRightGuesses=resinput.isRightGuesses
+        myfocusTruths=[...resinput.isRightGuesses]
+        myfocusTruths[myfocusTruths.length-1]=true
+        // setfocusTruths(myfocusTruths)
+
         nrdigits=guessdigits.length
         // setguessdigits(new Array(ndigits).fill(0))
         // setisRightGuesses(new Array(ndigits).fill(false))
-        console.log('useeffect resdigits in result', resdigits.join(','),isRightGuesses.join(','))
+        console.log('useeffect resdigits in result', resdigits.join(','),isRightGuesses.join(','),myfocusTruths.join(','))
         // console.log('useeffect guessdigits,istureGuesses in result', resinput.guessdigits,resinput.isRightGuesses)
     },[randomnumbers])
     // console.log(ndigits)
@@ -88,11 +94,21 @@ export const Result = ({mystyles,levels,randomnumbers,resinput}) => {
         // console.log('k and resdigits',k,mydigits[k],resdigits.join(','))
         istureGuesses[k]=checkifRightGuess(mydigits[k],resdigits[k])
         isRightGuesses= istureGuesses;
+
+        
         
         resinput.setisRightGuesses(istureGuesses)
         resinput.setguessdigits(mydigits)
+        istureGuesses.every(v => v === true)?  resinput.setcompletiontime(new Date()):null
+        // console.log('before k=',k, myfocusTruths.join(','))
+        // if(k-1>=0) {
+        //     myfocusTruths[k-1]=true
+        //     myfocusTruths[k]=false
+        // }
+        // setfocusTruths(myfocusTruths)
         // console.log('k and resdigits',k,mydigits[k],resdigits.join(','))
-        console.log('laterguessdigits,istureGuesses in result', guessdigits.join(','),isRightGuesses.join(','))
+        // console.log('laterguessdigits,istureGuesses in result k=',k, guessdigits.join(',')
+        // ,isRightGuesses.join(','),myfocusTruths.join(','))
         // let myVar = setTimeout(()=>{ 
         //     if (istureGuesses[k]) {
         //         setguessdigits(mydigits)
@@ -121,6 +137,7 @@ export const Result = ({mystyles,levels,randomnumbers,resinput}) => {
                 key={String(k)}
                 onChangeText= {(digit)=>bigaddDigit(digit,k)}
                 value={isRightGuesses[k]?guessdigits[k].toString():'' }
+                // autoFocus={focusTruths[k]}
                 // placeholder=''
                 // {guessdigits[k].toString() || '' }
                 editable={!isRightGuesses[k]} 
